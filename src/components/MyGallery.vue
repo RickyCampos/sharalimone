@@ -148,7 +148,7 @@ export default {
   max-width: $viewport-size;
   overflow: hidden;
   display: grid;
-  grid-auto-rows: 15rem;
+  grid-auto-rows: 400px;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
 }

@@ -1,14 +1,11 @@
 <template>
   <div class="my-menu">
     <div class="logo">
-      <img src="@/assets/images/sharalimone-profile.png" alt="">
-    </div>
-    <div class="title">
-      <h1>🍋 Shara Limone 🍋</h1>
+      <img src="@/assets/images/sharalimone-logo.png" alt="">
     </div>
     <nav class="navigation">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/contacto">Contacto</router-link>
+      <router-link to="/">PORTFOLIO</router-link>
+      <router-link to="/contacto">CONTACTO</router-link>
     </nav>
   </div>
 </template>
@@ -23,19 +20,25 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
   .my-menu {
-    width: 100%;
+    margin: 0 auto;
+    width: $viewport-size;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     height: 80px;
 
-    .logo > img {
-      width: 80px;
-    }
-    .title {
-      @include flex-vertical-center;
-      h1 {
-        font-size: 2rem;
+    .logo{
+      padding: 10px;
+      display: flex;
+      align-items: center;
+
+      img {
+        width: auto;
+        height: 60px;
+      }
+      p {
+        margin-left: 10px;
+        font-size: 1.5rem;
       }
     }
 
@@ -43,6 +46,24 @@ export default {
       display: flex;
       flex-direction: row;
       align-items: center;
+
+      a {
+        padding: 15px;
+        color: $color-dark;
+        @include font-weight(bold);
+        transition: .5s all ease;
+
+        &:hover {
+          color: $color-primary;
+        }
+
+
+
+      }
+
+      .router-link-exact-active {
+        color: $color-primary;
+      }
     }
   }
 </style>
