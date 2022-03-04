@@ -40,35 +40,42 @@ export default {
     z-index: 1;
     display: flex;
 
-  .close {
-    position: absolute;
-    right: 32px;
-    top: 32px;
-    width: 32px;
-    height: 32px;
-    opacity: 0.3;
-    cursor: pointer;
-    transition: all .5s ease;
-
-    &:hover {
-      opacity: 1;
+    @media screen and (max-width: $viewport-size-mobile) {
+      max-width: 100%;
+      max-height: 100%;
+      width: 100%;
+      height: 100%;
     }
-    &:before, &:after {
+
+    .close {
       position: absolute;
-      left: 15px;
-      content: '';
-      height: 33px;
-      width: 2px;
-      background-color: $color-dark;
-    }
+      right: 32px;
+      top: 32px;
+      width: 32px;
+      height: 32px;
+      opacity: 0.3;
+      cursor: pointer;
+      transition: all .5s ease;
 
-    &:before {
-    transform: rotate(45deg);
+      &:hover {
+        opacity: 1;
+      }
+      &:before, &:after {
+        position: absolute;
+        left: 15px;
+        content: '';
+        height: 33px;
+        width: 2px;
+        background-color: $color-dark;
+      }
+
+      &:before {
+      transform: rotate(45deg);
+      }
+      &:after {
+        transform: rotate(-45deg);
+      } 
     }
-    &:after {
-      transform: rotate(-45deg);
-    } 
-  }
 }
 
 </style>

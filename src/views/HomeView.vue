@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     async getData(){
-      await fetch('https://script.google.com/macros/s/AKfycbyq_Ym8suRTHCJl1QauLhTqZwuxeJcPtc3c2c2YYOrfvZbhJok2/exec')
+      await fetch('https://script.googleusercontent.com/macros/echo?user_content_key=gzjNaV-ALYJr_j_kMbxcWG0TsYpImxzutFyFB1nRmSAdrjrW91ZLKhm8SpaHb41sEXFEt-5Fsjx7rQX6dnYsvzdtSOBTQJJGm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnIZotgLJRKZ5JeP1WSZZjk_gc8mB_imkg4kAe6ONjdrsDTh8wx4sqqykQypKVE8cx941idI6grXz&lib=MrLHWzKqYum5nWZXb9DjOfzM3DsLC6oa1')
         .then(response => response.json())
         .then(json => {
           this.items=json
@@ -54,6 +54,13 @@ export default {
     opacity: 0
   }
 
+}
+
+@media screen and (max-width: $viewport-size) {
+
+  .my-gallery {
+    padding: 0 20px;
+  }
 }
 
 </style>

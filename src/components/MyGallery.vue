@@ -42,22 +42,26 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.my-gallery-list {
-  width: 100%;
-  max-width: $viewport-size;
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(auto-fill, minmax(calc(min(100%, 250px)), 1fr));
-  grid-auto-rows: 250px;
-  grid-auto-flow: dense;
 
-  .my-gallery-item {
-    &.featured {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
+  .my-gallery-list {
+    width: 100%;
+    max-width: $viewport-size;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(calc(min(100%, 250px)), 1fr));
+    grid-auto-rows: 250px;
+    grid-auto-flow: dense;
   }
+}
+.featured {
+  grid-column: span 2;
+  grid-row: span 2;
+}
 
+@media screen and (max-width: $viewport-size-mobile) {
+  .featured {
+    grid-column: 1;
+    grid-row: 1;
+  }
 }
 </style>

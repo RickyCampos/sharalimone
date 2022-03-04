@@ -39,6 +39,10 @@ export default {
     max-width: 100%;
     max-height: 100%;
     object-fit: cover;
+
+    @media screen and (max-width: $viewport-size-mobile) {
+      object-fit: contain;
+    }
   }
 
 </style>

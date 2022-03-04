@@ -20,13 +20,13 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
   .my-menu {
+    background-color: $color-light;
     margin: 0 auto;
     width: 100%;
     max-width: $viewport-size;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    height: 80px;
 
     .logo{
       display: flex;
@@ -66,4 +66,14 @@ export default {
       }
     }
   }
+
+@media screen and (max-width: $viewport-size-mobile) {
+  .my-menu {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+
+  }
+}
 </style>

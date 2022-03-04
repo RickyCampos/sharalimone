@@ -1,9 +1,11 @@
 {
   "name": "sharalimone",
   "version": "0.1.0",
+  "homepage": "https://github.io/RickyCampos/sharalimone",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --open --host='localhost'",
+    "deploy": "gh-pages -d dist", 
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -26,6 +28,7 @@
     "@vue/cli-service": "~5.0.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.5.0",
+    "gh-pages": "^3.2.3",
     "node-sass": "^7.0.1",
     "sass-loader": "^12.6.0",
     "vue-template-compiler": "^2.6.14"

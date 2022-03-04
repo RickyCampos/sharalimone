@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <my-menu/>
-    <router-view/>
+    <router-view class="view"/>
     <my-footer/>
   </div>
 </template>
@@ -28,6 +28,19 @@ export default {
   flex-direction:column;
   height:100vh; 
   margin:0; 
+  .my-menu {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+  }
+
+  .view {
+    margin-top: 80px;
+
+    @media screen and (max-width: $viewport-size-mobile) {
+      margin-top: 126px;
+    }
+  }
 
   .my-footer {
     margin-top: auto;
