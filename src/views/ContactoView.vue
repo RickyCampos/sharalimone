@@ -21,9 +21,15 @@ export default {
 
 <style lang="scss" scoped>
   .contacto-view {
+    text-align: center;
     max-width: $viewport-size / 2;
     width: 100%;
     margin: 30px auto 0 auto;
+
+    @media screen and (max-width: $viewport-size / 2) {
+      max-width: 100%;
+      padding: 0 20px;
+    }
 
     p {
       margin-top: 20px;

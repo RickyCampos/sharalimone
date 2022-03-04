@@ -1,10 +1,10 @@
 <template>
   <div class="contact-form">
     <div class="contact-form-fields">
-      <!-- <input v-model="form.name" placeholder="Nombre *" />
+      <input v-model="form.name" placeholder="Nombre *" />
       <input v-model="form.email" placeholder="Email *" />
       <input v-model="form.subject" placeholder="Asunto *" />
-      <textarea v-model="form.message" placeholder="Mensaje *" /> -->
+      <textarea v-model="form.message" placeholder="Mensaje *" />
       <button>CONTACTAR</button>
     </div>
   </div>
@@ -59,15 +59,16 @@ export default {
       cursor: pointer;
       background-color: $color-primary;
       border: 1px solid black;
-      box-shadow: none;
-      transition: all 0.3s ease;
+      transition: all 0.1s ease;
       @include font-weight(bold);
 
-      &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
           0 10px 10px rgba(0, 0, 0, 0.22);
+
+      &:active {
+        transform: translateY(2px);
       }
+  
     }
   }
 }
