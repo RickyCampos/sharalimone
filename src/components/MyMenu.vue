@@ -28,7 +28,6 @@ export default {
     height: 80px;
 
     .logo{
-      padding: 10px;
       display: flex;
       align-items: center;
 
