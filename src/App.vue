@@ -23,15 +23,16 @@ export default {
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  display:flex; 
-  flex-direction:column;
-  height:100vh; 
-  margin:0; 
+  height:100vh;
+  display: flex;
+  flex-direction: column;
+
   .my-menu {
     position: fixed;
     top: 0;
     z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .view {
@@ -43,7 +44,7 @@ export default {
   }
 
   .my-footer {
-    margin-top: auto;
+    margin: auto auto 0 auto;
   }
 }
 </style>

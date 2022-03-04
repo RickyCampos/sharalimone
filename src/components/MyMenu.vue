@@ -27,6 +27,7 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 10px;
 
     .logo{
       display: flex;
@@ -72,8 +73,6 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 20px;
-
   }
 }
 </style>

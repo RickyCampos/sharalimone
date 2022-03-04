@@ -22,7 +22,6 @@ export default {
 
 <style lang="scss" scoped>
   .my-footer {
-    margin: 0 auto;
     width: 100%;
     max-width: $viewport-size;
     height: 80px;
