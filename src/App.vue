@@ -24,5 +24,13 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  display:flex; 
+  flex-direction:column;
+  height:100vh; 
+  margin:0; 
+
+  .my-footer {
+    margin-top: auto;
+  }
 }
 </style>
