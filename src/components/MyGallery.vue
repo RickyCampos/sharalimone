@@ -48,7 +48,7 @@ export default {
   max-width: $viewport-size;
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(calc(min(100%, 250px)), 1fr));
   grid-auto-rows: 250px;
   grid-auto-flow: dense;
 

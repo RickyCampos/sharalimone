@@ -21,7 +21,8 @@ export default {
 <style lang="scss" scoped>
   .my-menu {
     margin: 0 auto;
-    width: $viewport-size;
+    width: 100%;
+    max-width: $viewport-size;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
