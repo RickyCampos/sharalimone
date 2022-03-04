@@ -1,16 +1,18 @@
 <template>
   <div class="contact-form">
-    <div class="contact-form-fields">
-      <input v-model="form.name" placeholder="Nombre *" />
-      <input v-model="form.email" placeholder="Email *" />
-      <input v-model="form.subject" placeholder="Asunto *" />
-      <textarea v-model="form.message" placeholder="Mensaje *" />
-      <button>CONTACTAR</button>
-    </div>
+    <form ref="form" @submit.prevent="sendEmail" class="contact-form-fields">
+      <input v-model="form.name" placeholder="Nombre *" name="name" />
+      <input v-model="form.email" placeholder="Email *" name="email" />
+      <input v-model="form.subject" placeholder="Asunto *" name="subject"/>
+      <textarea v-model="form.message" placeholder="Mensaje *" name="message"/>
+      <input type="submit" value="CONTACTAR">
+    </form>
   </div>
 </template>
 
 <script>
+import emailjs from 'emailjs-com'
+
 export default {
   name: 'ContactForm',
   data() {
@@ -22,7 +24,23 @@ export default {
         message: null,
       },
     }
+  },
+  methods: {
+    sendEmail() {
+      emailjs.sendForm(process.env.VUE_APP_EMAILJS_SERVICE_ID, process.env.VUE_APP_EMAILJS_TEMPLATE_ID, this.$refs.form, process.env.VUE_APP_EMAILJS_USER_ID)
+        .then((result) => {
+          console.log('SUCCESS!', result.text)
+          // Reset form field
+          this.form.name = ''
+          this.form.email = ''
+          this.form.subject = ''
+          this.form.message = ''
+        }, (error) => {
+          console.log('FAILED...', error.text)
+        })
+    }
   }
+
 }
 </script>
 
@@ -53,7 +71,7 @@ export default {
       height: 200px;
     }
 
-    button {
+    input[type=submit] {
       margin: 10px 0 0 auto;
       padding: 8px 20px;
       cursor: pointer;
