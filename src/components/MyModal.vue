@@ -2,7 +2,10 @@
   <div class="my-modal">
     <div class="backdrop" @click.self="$emit('clickoutside')">
       <div class="my-modal-container" @contextmenu.prevent>
-        <span class="close" @click.self="$emit('clickoutside')"/>
+        <div class="header">  
+          <h2 class="title">{{title}}</h2>
+          <font-awesome-icon icon="fa-solid fa-xmark" class="close" @click="$emit('clickoutside')"/>
+        </div>
         <slot></slot>
       </div>
     </div>
@@ -12,7 +15,13 @@
 
 <script>
 export default {
-  name: 'MyModal'
+  name: 'MyModal',
+  props: {
+    title: {
+      type: String,
+      default: ''
+    }
+  }
 }
 </script>
 
@@ -39,6 +48,7 @@ export default {
     background-color: $color-light;
     z-index: 1;
     display: flex;
+    flex-direction: column;
 
     @media screen and (max-width: $viewport-size-mobile) {
       max-width: 100%;
@@ -47,35 +57,23 @@ export default {
       height: 100%;
     }
 
-    .close {
-      position: absolute;
-      right: 32px;
-      top: 32px;
-      width: 32px;
-      height: 32px;
-      opacity: 0.3;
-      cursor: pointer;
-      transition: all .5s ease;
+    .header {
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
 
-      &:hover {
-        opacity: 1;
-      }
-      &:before, &:after {
-        position: absolute;
-        left: 15px;
-        content: '';
-        height: 33px;
-        width: 2px;
-        background-color: $color-dark;
-      }
+      .close {
+        font-size: 30px;
+        cursor: pointer;
 
-      &:before {
-      transform: rotate(45deg);
+        &:hover {
+        color: $color-primary;
+        }
       }
-      &:after {
-        transform: rotate(-45deg);
-      } 
     }
+
+
 }
 
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="my-modal-image">
     <transition name="fade" mode="out-in">
-      <my-modal v-if="show" @clickoutside="$emit('clickoutside')">
+      <my-modal v-if="show" :title="title" @clickoutside="$emit('clickoutside')">
         <img :src="src" alt="">
       </my-modal>
     </transition>
@@ -18,6 +18,7 @@ export default {
   },
   props: {
     src: String,
+    title: String,
     show: Boolean
   }
 }

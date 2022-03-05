@@ -1,5 +1,5 @@
 <template>
-  <div class="home-view">
+  <div class="merchandisingView">
     <transition name="fade">
       <my-spinner v-if="loading"/>
       <my-gallery v-else :items="items"/>
@@ -14,7 +14,7 @@ import MySpinner from '@/components/MySpinner.vue'
 
 
 export default {
-  name: 'HomeView',
+  name: 'MerchandisingView',
   components: {
     MyGallery,
     MySpinner
@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     async getData(){
-      await fetch('https://script.googleusercontent.com/macros/echo?user_content_key=gzjNaV-ALYJr_j_kMbxcWG0TsYpImxzutFyFB1nRmSAdrjrW91ZLKhm8SpaHb41sEXFEt-5Fsjx7rQX6dnYsvzdtSOBTQJJGm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnIZotgLJRKZ5JeP1WSZZjk_gc8mB_imkg4kAe6ONjdrsDTh8wx4sqqykQypKVE8cx941idI6grXz&lib=MrLHWzKqYum5nWZXb9DjOfzM3DsLC6oa1')
+      await fetch(process.env.VUE_APP_FETCH_URL+'?sheet=merchandising')
         .then(response => response.json())
         .then(json => {
           this.items=json

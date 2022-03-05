@@ -1,6 +1,5 @@
 <template>
   <div class="contacto-view">
-    <h1>Contacto</h1>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas quos error accusamus illo quaerat culpa cumque inventore adipisci repudiandae. Sed modi enim architecto aliquid beatae commodi earum maiores sint ipsum?</p>
     <contact-form/>
   </div>

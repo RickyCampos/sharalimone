@@ -1,9 +1,9 @@
 <template>
   <div class="my-gallery">
     <div class="my-gallery-list">
-      <my-gallery-item :class="{featured: item.featured}" @click.native="loadImage(item.url)" v-for="(item, index) in items" :key="index" :item="item"/>
+      <my-gallery-item :class="{featured: item.featured}" @click.native="loadItem(item)" v-for="(item, index) in items" :key="index" :item="item"/>
     </div>
-    <my-modal-image :src="srcImageLoaded" :show="showImage" @clickoutside="showImage=false"/>
+    <my-modal-image :src="srcImageLoaded" :title="titleImageLoaded" :show="showImage" @clickoutside="showImage=false"/>
   </div>
 </template>
 
@@ -23,14 +23,15 @@ export default {
   data() {
     return {
       showImage: false,
-      srcImageLoaded: null
+      srcImageLoaded: null,
+      titleImageLoaded: null
     }
   },
   methods: {
-    loadImage(src){
-      this.srcImageLoaded = src
+    loadItem(item){
+      this.srcImageLoaded = item.url
+      this.titleImageLoaded = item.text
       this.showImage = true
-
     }
   }
 }

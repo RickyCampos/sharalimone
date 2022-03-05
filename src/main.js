@@ -8,9 +8,11 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 /* import specific icons */
 import { faInstagram, faFacebookF } from '@fortawesome/free-brands-svg-icons'
+import { faBars,faXmark } from '@fortawesome/free-solid-svg-icons'
+
 
 /* add icons to the library */
-library.add(faInstagram, faFacebookF)
+library.add(faInstagram, faFacebookF, faBars, faXmark)
 /* add font awesome icon component */
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

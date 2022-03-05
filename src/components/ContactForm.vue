@@ -30,16 +30,20 @@ export default {
       emailjs.sendForm(process.env.VUE_APP_EMAILJS_SERVICE_ID, process.env.VUE_APP_EMAILJS_TEMPLATE_ID, this.$refs.form, process.env.VUE_APP_EMAILJS_USER_ID)
         .then((result) => {
           console.log('SUCCESS!', result.text)
-          // Reset form field
-          this.form.name = ''
-          this.form.email = ''
-          this.form.subject = ''
-          this.form.message = ''
+          this.resetFormFields()
         }, (error) => {
           console.log('FAILED...', error.text)
         })
+    },
+    resetFormFields(){
+      this.form = {
+        name: null,
+        email: null,
+        subject: null,
+        message: null,
+      }
     }
-  }
+  },
 
 }
 </script>
