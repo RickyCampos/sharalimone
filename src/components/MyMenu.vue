@@ -1,11 +1,11 @@
 <template>
   <div class="my-menu">
-    <div class="logo">
+    <div class="logo" @click="goHome">
       <img src="@/assets/images/sharalimone-logo.png" alt="">
     </div>
 
     <div class="nav-menu" :class="{ active: isActive }">
-      <router-link to="/strips" @click.native="setActive(false)">VIÑETAS</router-link>
+      <router-link to="/" @click.native="setActive(false)">VIÑETAS</router-link>
       <router-link to="/walls" @click.native="setActive(false)">MUROS</router-link>
       <router-link to="/merchandising" @click.native="setActive(false)">MERCHANDISING</router-link>
       <router-link to="/contacto" @click.native="setActive(false)">CONTACTO</router-link>
@@ -28,6 +28,9 @@ export default {
   methods: {
     setActive(active){
       this.isActive = active
+    },
+    goHome(){
+      this.$router.push('/').catch(()=>{})
     }
   }
 }
@@ -50,6 +53,7 @@ export default {
     .logo{
       display: flex;
       align-items: center;
+      cursor: pointer;
 
       img {
         width: auto;
@@ -90,10 +94,13 @@ export default {
 
 @media only screen and (max-width: $viewport-size-mobile) {
   .my-menu {
+    .logo > img {
+      height: 45px;
+    }
     .nav-menu {
       position: fixed;
       left: -100%;
-      top: 5rem;
+      top: 65px;
       flex-direction: column;
       background-color: #fff;
       width: 100%;

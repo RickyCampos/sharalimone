@@ -39,7 +39,7 @@ export default {
     margin-top: 80px;
 
     @media screen and (max-width: $viewport-size-mobile) {
-      margin-top: 126px;
+      margin-top: 65px;
     }
   }
 

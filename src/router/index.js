@@ -1,15 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import StripsView from '../views/StripsView.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/strips',
-    alias: ['/', '/strips'],
-    name: 'home',
-    component: StripsView
+    path: '/',
+    name: 'strips',
+    component: () => {
+      return import(/* webpackChunkName: "strips" */ '../views/StripsView.vue')
+    }  
   },
   {
     path: '/walls',
