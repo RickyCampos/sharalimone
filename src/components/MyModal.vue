@@ -31,8 +31,7 @@ export default {
   .backdrop {
     width: 100vw;
     height: 100vh;
-    background: $color-dark;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba($color-dark,0.8);
     position: fixed;
     z-index: 1;
     top: 0;

@@ -3,7 +3,7 @@
     <my-spinner v-if="loading"/>
 
     <div class="contacto-view-container">
-      <contact-form v-if="status === 'form' && !loading" @showLoading="loading = $event" @setStatus="status = $event"/>
+      <contact-form v-show="status === 'form' && !loading" @showLoading="loading = $event" @setStatus="status = $event"/>
       
       <div v-if="status === 'success'" class="success">
         <h2>Gracias por ponerte en contacto conmigo. En poco tiempo tendrás noticias mías.</h2>

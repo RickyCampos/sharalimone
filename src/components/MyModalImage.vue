@@ -31,14 +31,18 @@ export default {
 
 <style lang="scss" scoped>
 
- .fade-enter,
+  .my-modal-image {
+    z-index: 1;
+  }
+
+  .fade-enter,
   .fade-leave-to {
     opacity: 0;
   }
 
   .fade-enter-active,
   .fade-leave-active {
-    transition: opacity .5s ease;
+    transition: opacity .8s ease;
   }
   
   .image {
