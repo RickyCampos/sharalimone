@@ -1,18 +1,42 @@
 <template>
   <div class="contacto-view">
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas quos error accusamus illo quaerat culpa cumque inventore adipisci repudiandae. Sed modi enim architecto aliquid beatae commodi earum maiores sint ipsum?</p>
-    <contact-form/>
+    <my-spinner v-if="loading"/>
+
+    <div class="contacto-view-container">
+      <contact-form v-if="status === 'form' && !loading" @showLoading="loading = $event" @setStatus="status = $event"/>
+      
+      <div v-if="status === 'success'" class="success">
+        <h2>Gracias por ponerte en contacto conmigo. En poco tiempo tendrás noticias mías.</h2>
+      </div>
+
+      <div v-if="status === 'error'" class="error">
+        <h2>Parece que ha ocurrido un error. Por favor, intentalo de nuevo más tarde o ponte en contacto
+        conmigo a través de mis redes sociales.</h2>
+        
+      </div>
+    </div>
+
+
+    
   </div>
 </template>
 
 <script>
 import ContactForm from '@/components/ContactForm.vue'
+import MySpinner from '@/components/MySpinner.vue'
 
 
 export default {
   name: 'ContactoView',
   components: {
-    ContactForm
+    ContactForm,
+    MySpinner
+  },
+  data(){
+    return {
+      loading: false,
+      status: 'form'
+    }
   }
 }
 
@@ -30,11 +54,7 @@ export default {
       padding: 0 20px;
     }
 
-    p {
-      margin-top: 20px;
-    }
-
-    .contact-form {
+    .contacto-view-container {
       margin-top: 30px;
     }
   }

@@ -4,11 +4,8 @@ module.exports = defineConfig({
   css: {
     loaderOptions: {
       sass: {
-        additionalData: `
-        @import "@/assets/styles/reset.scss";
+        prependData: `
         @import "@/assets/styles/style.scss";
-        @import "@/assets/styles/vars.scss";
-        @import "@/assets/styles/mixins.scss";
         `
       }
     }

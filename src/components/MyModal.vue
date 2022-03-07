@@ -6,7 +6,9 @@
           <h2 class="title">{{title}}</h2>
           <font-awesome-icon icon="fa-solid fa-xmark" class="close" @click="$emit('clickoutside')"/>
         </div>
-        <slot></slot>
+        <div class="container">
+          <slot></slot>
+        </div>
       </div>
     </div>
 
@@ -40,6 +42,8 @@ export default {
   .my-modal-container {
     max-width: 90%;
     max-height: 90%;
+    width: 100%;
+    height: 100%;
     position: fixed;
     left: 50%;
     top: 50%;
@@ -62,6 +66,8 @@ export default {
       display: flex;
       justify-content: space-between;
       align-content: center;
+      // background-color: $color-gray-light;
+      border-bottom: 1px solid $color-gray-dark;
 
       .close {
         font-size: 30px;
@@ -71,6 +77,11 @@ export default {
         color: $color-primary;
         }
       }
+    } 
+    .container {
+      width: 100%;
+      height: 100%;
+      padding: 20px;
     }
 
 

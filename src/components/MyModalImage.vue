@@ -2,7 +2,7 @@
   <div class="my-modal-image">
     <transition name="fade" mode="out-in">
       <my-modal v-if="show" :title="title" @clickoutside="$emit('clickoutside')">
-        <img :src="src" alt="">
+        <div :style="image" class="image"/>
       </my-modal>
     </transition>
   </div>
@@ -20,7 +20,12 @@ export default {
     src: String,
     title: String,
     show: Boolean
-  }
+  },
+  computed: {
+    image: function(){
+      return { backgroundImage: `url(${this.src})` }
+    }
+  },
 }
 </script>
 
@@ -36,14 +41,13 @@ export default {
     transition: opacity .5s ease;
   }
   
-  img {
+  .image {
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    height: 100%;
     max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-
-    @media screen and (max-width: $viewport-size-mobile) {
-      object-fit: contain;
-    }
   }
 
 </style>

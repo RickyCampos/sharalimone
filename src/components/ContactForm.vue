@@ -1,20 +1,62 @@
 <template>
   <div class="contact-form">
-    <form ref="form" @submit.prevent="sendEmail" class="contact-form-fields">
-      <input v-model="form.name" placeholder="Nombre *" name="name" />
-      <input v-model="form.email" placeholder="Email *" name="email" />
-      <input v-model="form.subject" placeholder="Asunto *" name="subject"/>
-      <textarea v-model="form.message" placeholder="Mensaje *" name="message"/>
-      <input type="submit" value="CONTACTAR">
-    </form>
+    <h2>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas quos error accusamus illo quaerat culpa cumque inventore adipisci repudiandae. Sed modi enim architecto aliquid beatae commodi earum maiores sint ipsum?</h2>
+
+    <ValidationObserver v-slot="{ handleSubmit }" class="contact-form-container"> 
+      <form ref="form"  @submit.prevent="handleSubmit(sendEmail)" class="contact-form-fields">
+        <validation-provider rules="required" v-slot="{ errors }">
+          <input v-model="form.name" placeholder="Nombre *" name="name" :class="{error: errors[0]}" />
+          <p class="error-message" v-show="!!errors[0]">{{errors[0]}}</p>
+        </validation-provider>
+
+        <validation-provider rules="required|email" v-slot="{ errors }">
+          <input v-model="form.email" placeholder="Email *" name="email" :class="{error: errors[0]}" />
+          <p class="error-message" v-show="!!errors[0]">{{errors[0]}}</p>
+        </validation-provider>
+
+        <validation-provider rules="required" v-slot="{ errors }">
+          <input v-model="form.subject" placeholder="Asunto *" name="subject" :class="{error: errors[0]}"/>
+          <p class="error-message" v-show="!!errors[0]">{{errors[0]}}</p>
+        </validation-provider>
+
+        <validation-provider rules="required" v-slot="{ errors }">
+          <textarea v-model="form.message" placeholder="Mensaje *" name="message" :class="{error: errors[0]}"/>
+          <p class="error-message" v-show="!!errors[0]">{{errors[0]}}</p>
+        </validation-provider>
+
+        <input type="submit" value="CONTACTAR">
+      </form>
+    </ValidationObserver>
   </div>
 </template>
 
 <script>
 import emailjs from 'emailjs-com'
+import { ValidationProvider, ValidationObserver } from 'vee-validate'
+import { extend } from 'vee-validate'
+import { required, email } from 'vee-validate/dist/rules'
+
+
+extend('email', {
+  ...email,
+  message: 'Introduce un formato de email valido'
+})
+
+extend('required', {
+  ...required,
+  message: 'Este campo es obligatorio',
+  validate(value) {
+    return {
+      required: true,
+      valid: ['', null, undefined].indexOf(value) === -1
+    }
+  },
+  computesRequired: true
+})
 
 export default {
   name: 'ContactForm',
+  components: {ValidationProvider, ValidationObserver},
   data() {
     return {
       form: {
@@ -27,21 +69,15 @@ export default {
   },
   methods: {
     sendEmail() {
+      this.$emit('showLoading', true)
       emailjs.sendForm(process.env.VUE_APP_EMAILJS_SERVICE_ID, process.env.VUE_APP_EMAILJS_TEMPLATE_ID, this.$refs.form, process.env.VUE_APP_EMAILJS_USER_ID)
-        .then((result) => {
-          console.log('SUCCESS!', result.text)
-          this.resetFormFields()
-        }, (error) => {
-          console.log('FAILED...', error.text)
+        .then(() => {
+          this.$emit('loading', false)
+          this.$emit('setStatus', 'success')
+        }, () => {
+          this.$emit('loading', false)
+          this.$emit('setStatus', 'error')
         })
-    },
-    resetFormFields(){
-      this.form = {
-        name: null,
-        email: null,
-        subject: null,
-        message: null,
-      }
     }
   },
 
@@ -55,19 +91,33 @@ export default {
   flex-direction: column;
   align-items: center;
 
+  &-container {
+    width: 100%;
+    margin-top: 30px;
+  }
+
   &-fields {
     width: 100%;
     display: flex;
     flex-direction: column;
 
+    >span {
+      margin-bottom: 10px;
+    }
+
     input,
     textarea {
+      width: 100%;
       @include font-weight(regular);
       font-size: 1rem;
       padding: 10px;
       background-color: $color-gray-light;
       border: 1px solid $color-dark;
       margin-bottom: 10px;
+
+      &.error {
+        border: 1px solid red;
+      }
     }
 
     textarea {
@@ -83,6 +133,7 @@ export default {
       border: 1px solid black;
       transition: all 0.1s ease;
       @include font-weight(bold);
+      width: auto;
 
       box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
           0 10px 10px rgba(0, 0, 0, 0.22);
@@ -91,6 +142,11 @@ export default {
         transform: translateY(2px);
       }
   
+    }
+
+    .error-message {
+      color: red;
+      font-size: 0.9rem;
     }
   }
 }
